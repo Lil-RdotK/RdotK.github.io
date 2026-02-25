@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+  }
+</style>
+</head>
+<body>
+
+<audio id="player" src="morse.wav"></audio>
+
+<script>
+  const audio = document.getElementById("player");
+
+  audio.volume = 0.4; // 40% du volume max
+
+  function playWithPause() {
+    audio.currentTime = 0;
+    audio.play();
+  }
+
+  audio.addEventListener("ended", () => {
+    setTimeout(playWithPause, 2000); // pause de 2 secondes
+  });
+
+  playWithPause();
+
+  document.addEventListener("click", playWithPause, { once: true });
+</script>
+
+</body>
+</html>
